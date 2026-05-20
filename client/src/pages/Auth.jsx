@@ -1,17 +1,23 @@
 import React from 'react';
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../utils/firebase";
 
 const Auth = () => {
 
     const handleGoogleAuth = async () => {
         try {
-
+            const res = await signInWithPopup(auth, provider);
+            const user = res?.user;
+            const name = user?.displayName;
+            const email = user?.email;
+            console.log(res);
         } catch (error) {
             console.log(error);
         }
     }
-    
+
     return (
         <div className='min-h-screen overflow-hidden bg-white text-black px-8'>
             <motion.header
@@ -50,6 +56,7 @@ const Auth = () => {
                     </h1>
 
                     <motion.button
+                        onClick={handleGoogleAuth}
                         whileHover={{
                             y: -10,
                             rotateX: 8,
