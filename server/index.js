@@ -4,6 +4,7 @@ import connectDB from "./database/connectDB.js";
 import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import userRouter from "./routes/user.route.js";
 
 // .env config
 if (process.env.NODE_ENV !== "production") {
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API Routes
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
 
 // App Entry Point

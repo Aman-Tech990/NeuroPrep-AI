@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Auth from './pages/Auth';
 import Home from './pages/Home';
-export const serverUrl = "http://localhost:3000"
+import { getCurrentUser } from './services/api';
+export const serverUrl = "http://localhost:3000";
 
 const App = () => {
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
   return (
     <>
       <Routes>
