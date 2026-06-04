@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../utils/firebase";
+import axios from "axios";
+import { serverUrl } from '../App';
 
 const Auth = () => {
 
@@ -12,7 +14,12 @@ const Auth = () => {
             const user = res?.user;
             const name = user?.displayName;
             const email = user?.email;
-            console.log(res);
+
+            const result = await axios.post(serverUrl + "/api/auth/google", {
+                name, email
+            }, { withCredentials: true });
+            console.log(result?.data);
+            
         } catch (error) {
             console.log(error);
         }
