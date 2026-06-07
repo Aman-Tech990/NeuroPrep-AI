@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from "motion/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { serverUrl } from '../App';
+import { setUserData } from '../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -9,6 +13,19 @@ const Navbar = () => {
 
     const [showCredits, setShowCredits] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleSignOut = async () => {
+        try {
+            await axios.get(serverUrl + "/api/auth/logOut", { withCredentials: true });
+            dispatch(setUserData(null));
+            navigate("/auth");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <motion.div
@@ -98,8 +115,12 @@ const Navbar = () => {
                                 animate={{ opacity: 1, y: 10, scale: 1 }}
                                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                                 transition={{ duration: 0.4 }}
-                                className='absolute right-0 mt-4 w-52 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white'
+                                className='absolute right-0 mt-4 w-52 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white cursor-pointer'
                             >
+
+                                <MenuItem text="History" onClick={() => setShowProfile(false)} />
+                                <div className='h-px bg-white/10 mx-3' />
+                                <MenuItem text="Sign-out" red onClick={handleSignOut} />
 
                             </motion.div>
                         }
@@ -114,7 +135,18 @@ const Navbar = () => {
 
 function MenuItem({ onClick, text, red }) {
     return (
-        
+        <div
+            onClick={onClick}
+            className={`w-full text-left px-5 py-3 text-sm 
+            transition-colors rounded-lg
+            ${red
+                    ? "text-red-400 hover:bg-red-500/10"
+                    : "text-gray-200 hover:bg-white/10"
+                }
+            `
+            }>
+            {text}
+        </div >
     )
 }
 
