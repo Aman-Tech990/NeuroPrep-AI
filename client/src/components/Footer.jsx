@@ -1,7 +1,11 @@
 import React from 'react';
 import { motion } from "motion/react";
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+
+    const navigate = useNavigate();
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -45,12 +49,14 @@ const Footer = () => {
                     <h1 className="text-sm font-semibold text-white mb-4">Quick Links</h1>
                     <ul className="space-y-2 text-sm">
                         <li
-                            className="text-gray-300 hover:text-white transition-colors"
+                            onClick={() => navigate("/notes")}
+                            className="text-gray-300 hover:text-white transition-colors cursor-pointer"
                         >
                             Notes
                         </li>
                         <li
-                            className="text-gray-300 hover:text-white transition-colors"
+                            onClick={() => navigate("/history")}
+                            className="text-gray-300 hover:text-white transition-colors cursor-pointer"
                         >
                             History
                         </li>
