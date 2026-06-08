@@ -3,8 +3,11 @@ import Navbar from '../components/Navbar';
 import { motion } from "motion/react";
 import img from "../assets/Study.png";
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate();
+
     return (
         <div className='min-h-screen overflow-hidden bg-white text-black'>
             <Navbar />
@@ -46,6 +49,7 @@ const Home = () => {
                         </motion.p>
 
                         <motion.button
+                            onClick={() => navigate("/notes")}
                             whileHover={{
                                 y: -10,
                                 rotateX: 8,

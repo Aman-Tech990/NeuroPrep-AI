@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { serverUrl } from '../App';
 import { setUserData } from '../redux/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -86,7 +86,7 @@ const Navbar = () => {
                                         Use credit to generate AI Notes, diagrams & PDFs.
                                     </p>
                                     <button
-                                        onClick={() => setShowCredits(false)}
+                                        onClick={() => { setShowCredits(false); navigate("/pricing") }}
                                         className='w-full py-2 rounded-lg bg-gradient-to-br from-white to-gray-200 text-black font-semibold hover:opacity-80 cursor-pointer'
                                     >
                                         Buy More Credits
@@ -118,7 +118,7 @@ const Navbar = () => {
                                 className='absolute right-0 mt-4 w-52 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.7)] p-4 text-white cursor-pointer'
                             >
 
-                                <MenuItem text="History" onClick={() => setShowProfile(false)} />
+                                <MenuItem text="History" onClick={() => { setShowProfile(false); navigate("/history") }} />
                                 <div className='h-px bg-white/10 mx-3' />
                                 <MenuItem text="Sign-out" red onClick={handleSignOut} />
 
