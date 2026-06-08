@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { motion } from "motion/react";
 import img from "../assets/Study.png";
+import Footer from '../components/Footer';
 
 const Home = () => {
     return (
@@ -89,14 +90,16 @@ const Home = () => {
 
             {/* Bottom */}
             <section
-                className="max-w-6xl mx-auto px-8 py-32 grif grid-cols-1 md:grid-cols-4 gap-10"
+                className="max-w-6xl mx-auto px-8 py-32 grid grid-cols-1 md:grid-cols-4 gap-10"
             >
                 <Feature icon="📗" title="Exam Notes" desc="High-yield exam-oriented notes with revision points." />
-                <Feature icon="📗" title="Exam Notes" desc="High-yield exam-oriented notes with revision points." />
-                <Feature icon="📗" title="Exam Notes" desc="High-yield exam-oriented notes with revision points." />
-                <Feature icon="📗" title="Exam Notes" desc="High-yield exam-oriented notes with revision points." />
-
+                <Feature icon="📂" title="Project Notes" desc="Well-structured content for assignments and projects." />
+                <Feature icon="📊" title="Diagrams" desc="Auto-generated visual diagrams for clarity." />
+                <Feature icon="⬇️" title="PDF Download" desc="Download clean, printable PDFs instantly." />
             </section>
+
+            {/* Footer */}
+            <Footer />
 
         </div>
     )
