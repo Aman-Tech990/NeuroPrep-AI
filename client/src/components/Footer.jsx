@@ -60,6 +60,12 @@ const Footer = () => {
                         >
                             History
                         </li>
+                        <li
+                            onClick={() => navigate("/pricing")}
+                            className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                        >
+                            Pricing
+                        </li>
                     </ul>
                 </div>
 
