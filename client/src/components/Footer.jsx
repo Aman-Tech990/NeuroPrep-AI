@@ -1,10 +1,25 @@
 import React from 'react';
 import { motion } from "motion/react";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { serverUrl } from '../App';
+import { setUserData } from '../redux/userSlice';
 
 const Footer = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleSignOut = async () => {
+        try {
+            await axios.get(serverUrl + "/api/auth/logOut", { withCredentials: true });
+            dispatch(setUserData(null));
+            navigate("/auth");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <motion.div
@@ -64,9 +79,36 @@ const Footer = () => {
                             onClick={() => navigate("/pricing")}
                             className="text-gray-300 hover:text-white transition-colors cursor-pointer"
                         >
-                            Pricing
+                            Add Credits
                         </li>
                     </ul>
+                </div>
+
+                <div>
+                    <div
+                        className="text-center"
+                    >
+                        <h1 className="text-sm font-semibold text-white mb-4">Support & Account</h1>
+                        <ul className="space-y-2 text-sm">
+                            <li
+                                onClick={() => navigate("/auth")}
+                                className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                            >
+                                Sign-in
+                            </li>
+                            <li
+                                onClick={handleSignOut}
+                                className="text-red-400 hover:text-red-300 transition-colors cursor-pointer"
+                            >
+                                Sign-out
+                            </li>
+                            <li
+                                className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                            >
+                                support@neuroprepai.com
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
             </div>
