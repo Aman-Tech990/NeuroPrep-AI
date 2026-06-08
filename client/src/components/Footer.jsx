@@ -45,7 +45,7 @@ const Footer = () => {
                         <img src="/NeuroPrep-AI.png" alt="logo" className='w-10 h-10' />
                         <span
                             className="text-lg font-semibold bg-gradient-to-br from-white via-gray-300 to-white bg-clip-text text-transparent"
-                            style={{ textShadow: "0 6px 18px rgba(0,0,0,0.4" }}
+                            style={{ textShadow: "0 6px 18px rgba(0,0,0,0.4)" }}
                         >
                             NeuroPrep <span className='text-gray-500'>AI</span>
                         </span>
@@ -112,6 +112,14 @@ const Footer = () => {
                 </div>
 
             </div>
+
+            <div className="my-6 h-px bg-white/10" />
+
+            <p
+                className="text-center text-xs text-gray-500"
+            >
+                © {new Date().getFullYear()} NeuroPrep AI. All rights reserved.
+            </p>
 
         </motion.div>
     )
