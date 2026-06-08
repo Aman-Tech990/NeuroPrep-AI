@@ -57,9 +57,10 @@ const Navbar = () => {
                         whileTap={{ scale: 0.95 }}
                         className='flex items-center gap-1 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white-text-sm shadow-md cursor-pointer'
                     >
-                        <span>💎</span>
-                        <span className='text-white'>{credits}</span>
+                        <span className='text-2xl'>💎</span>
+                        <span className='text-white font-semibold'>{credits}</span>
                         <motion.span
+                            onClick={() => navigate("/pricing")}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
                             className='ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-white text-xs font-bold'

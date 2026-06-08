@@ -40,7 +40,7 @@ const Auth = () => {
                 <h3
                     className='text-2xl font-bold bg-linear-to-r from-white via-gray-400 to-white bg-clip-text text-transparent'
                 >
-                    ExamNotes AI
+                    NeuroPrep AI
                 </h3>
 
                 <p
