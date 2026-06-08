@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
@@ -9,6 +9,10 @@ const Notes = () => {
     const navigate = useNavigate();
     const { userData } = useSelector((state) => state.user);
     const credits = userData?.user?.credits;
+
+    const [loading, setLoading] = useState(false);
+    const [result, setResult] = useState(null);
+    const [error, setError] = useState("");
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 px-6 py-8">
@@ -65,7 +69,7 @@ const Notes = () => {
             <motion.div
                 className="mb-12"
             >
-                <TopicForm />
+                <TopicForm loading={loading} setResult={setResult} setLoading={setLoading} setError={setError} />
             </motion.div>
 
 

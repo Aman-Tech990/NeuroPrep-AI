@@ -62,6 +62,15 @@ const TopicForm = ({ setResult, setLoading, loading, setError }) => {
                 />
             </div>
 
+            <motion.button
+                whileHover={!loading ? { y: 2 } : {}}
+                whileTap={!loading ? { scale: 0.95 } : {}}
+                disabled={loading}
+                className={`w-full mt-4 py-3 rounded-xl font-semibold flex items-center justify-center gap-3 transition ${loading ? "bg-gray-300 text-gray-600 cursor-not-allowed" : "bg-gradient-to-br from-white to-gray-200 shadow-[0_15px_25px_rgba(0,0,0,0.4)] text-black font-semibold cursor-pointer"}`
+                }
+            >
+                {loading ? "Generating Notes..." : "Generate Notes"}
+            </motion.button>
 
 
         </motion.div>
