@@ -49,7 +49,7 @@ export const generateNotes = async (req, res) => {
             includeChart
         });
 
-        const AIResponse = generateGeminiResponse(prompt);
+        const AIResponse = await generateGeminiResponse(prompt);
 
         const notes = await Notes.create({
             user: user._id,
@@ -71,7 +71,7 @@ export const generateNotes = async (req, res) => {
             user.notes = [];
         }
 
-        user.notes.push(note._id);
+        user.notes.push(notes._id);
 
         await user.save();
 

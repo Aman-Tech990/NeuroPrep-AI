@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const notesSchema = new mongoose.model({
+const notesSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -28,7 +28,7 @@ const notesSchema = new mongoose.model({
         required: true
     }
 
-}, { timeStamp: true });
+}, { timestamps: true });
 
 const Notes = mongoose.model("Notes", notesSchema);
 
