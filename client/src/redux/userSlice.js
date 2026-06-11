@@ -8,9 +8,14 @@ const userSlice = createSlice({
     reducers: {
         setUserData: (state, action) => {
             state.userData = action.payload;
+        },
+        updateCredit: (state, action) => {
+            if (state.userData) {
+                state.userData.user.credits = action.payload;
+            }
         }
     }
 });
 
-export const { setUserData } = userSlice.actions;
+export const { setUserData, updateCredit } = userSlice.actions;
 export default userSlice.reducer;

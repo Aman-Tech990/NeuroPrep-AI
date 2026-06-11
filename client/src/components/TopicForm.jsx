@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { generateNotes } from "../services/api";
+import { useDispatch } from "react-redux";
+import { updateCredit } from "../redux/userSlice";
 
 const TopicForm = ({ setResult, setLoading, loading, setError }) => {
 
@@ -12,6 +14,8 @@ const TopicForm = ({ setResult, setLoading, loading, setError }) => {
     const [includeChart, setIncludeChart] = useState(false);
     const [progress, setProgress] = useState(0);
     const [progressText, setProgressText] = useState("");
+
+    const dispatch = useDispatch();
 
     const handleSubmit = async () => {
         if (!topic.trim()) {
@@ -32,7 +36,20 @@ const TopicForm = ({ setResult, setLoading, loading, setError }) => {
                 includeDiagram,
                 includeChart
             });
+
             setResult(result.data);
+            setLoading(false);
+            setClassLevel("");
+            setTopic("");
+            setExamType("");
+            setIncludeChart(false);
+            setRevisionMode(false);
+            setIncludeDiagram(false);
+
+            if (typeof result.creditsLeft === "number") {
+                dispatch(updateCredit(result.creditsLeft));
+            }
+
         } catch (error) {
             console.log(error);
             setError("Failed to fetch notes from server!");
@@ -161,7 +178,7 @@ const TopicForm = ({ setResult, setLoading, loading, setError }) => {
                     This may take upto 2-5 minutes. Please dont't close or refresh the page.
                 </p>
 
-                
+
 
             </div>
             }
