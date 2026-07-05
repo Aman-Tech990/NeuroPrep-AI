@@ -2,7 +2,9 @@ import React from "react";
 
 const FinalResult = ({ result }) => {
 
-    if (!result) return null;
+    const markdownComponent = {
+        
+    }
 
     return (
         <div className="">
